@@ -1,6 +1,6 @@
 import argparse
-from scripts.api_calls import get_generic, post_generic, put_generic, delete_generic
-from scripts.io_ops import file_operations
+from scripts.api_calls import get_alphavantage_demo, post_generic, put_generic, delete_generic
+from scripts.io_ops import file_operations, write_to_file
 
 
 def add_args(parser):
@@ -19,7 +19,8 @@ def main():
     args = parser.parse_args()
 
     if args.get:
-        get_generic(args.get)
+        json_data = get_alphavantage_demo(args.get)
+        write_to_file(json_data, 'demo_data.json')
         return
 
     if args.post:

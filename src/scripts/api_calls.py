@@ -2,14 +2,14 @@ import requests
 from requests.exceptions import ConnectionError
 
 
-def get_generic(path_var):
+def get_alphavantage_demo(hostname):
     # Make a GET request to the API endpoint
     try:
-        response = requests.get('https://api.example.com/endpoint' + path_var)
+        response = requests.get('https://www.' + hostname + '.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo')
         # Check the status code of the response
         if response.status_code == 200:
             # Print the JSON data returned by the API
-            print(response.json())
+            return response.json()
         else:
             # Print the status code if the request was not successful
             print('Error:', response.status_code)
